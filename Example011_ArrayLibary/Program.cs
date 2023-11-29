@@ -1,11 +1,12 @@
-﻿void Fillarray(int[] collection)
+﻿void FillArray(int[] collection)
 {
-    int Length = collection.Length;
+    int length = collection.Length;
+    Random random = new Random();  // Создаем объект Random один раз
     int index = 0;
-    while (index < Length)
+    
+    while (index < length)
     {
-        collection[index] = new Random().Next(1, 10);
-        // index = index + 1;
+        collection[index] = random.Next(1, 10);
         index++;
     }
 }
@@ -14,6 +15,7 @@ void PrintArray(int[] col)
 {
     int count = col.Length;
     int position = 0;
+
     while (position < count)
     {
         Console.WriteLine(col[position]);
@@ -21,8 +23,31 @@ void PrintArray(int[] col)
     }
 }
 
+int IndexOf(int[] collection, int find)
+{
+    int count = collection.Length;
+    int index = 0;
+    int position = -1;  // Устанавливаем position в -1
+
+    while (index < count)
+    {
+        if (collection[index] == find)
+        {
+            position = index;
+            break;
+        }
+        index++;
+    }
+
+    return position;
+}
 
 int[] array = new int[10];
-
-Fillarray(array);
+FillArray(array);
+array[4] = 4;
+array[6] = 4;
 PrintArray(array);
+Console.WriteLine();
+
+int pos = IndexOf(array, 444);
+Console.WriteLine(pos);
